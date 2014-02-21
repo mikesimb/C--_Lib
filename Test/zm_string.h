@@ -13,9 +13,9 @@
 #include <vector>
 
 #if UNICODE
-typedef  std::string  zstring;
+typedef  std::wstring  zstring;
 #else
-typedef std::wstring zstring;
+typedef std::string zstring;
 #endif
 
 
@@ -146,7 +146,38 @@ typedef std::wstring zstring;
 #ifdef UNICODE
 #define TCHAR  WCHAR
 #define ZM_L(x) L##x
-#define ZM_strlen  wcslen
+#define ZM_strlen                 ZM_StrlenW
+#define ZM_Strcat                 ZM_StrcatW
+#define ZM_StrSafeCat          ZM_StrSafeCatW
+#define ZM_Strncat               ZM_StrncatW
+#define ZM_Strcpy                ZM_StrcpyW
+#define ZM_StrSafeCpy         ZM_StrSafeCpyW
+#define ZM_Strncpy              ZM_StrncpyW
+#define ZM_Strcmp               ZM_StrcmpW
+#define ZM_Strchr				   ZM_StrchrW
+#define ZM_Strcasecmp        ZM_StrcasecmpW
+#define ZM_Strtok                 ZM_StrtokW
+#define ZM_Strlwr                 ZM_StrlwrW
+#define ZM_Strupr                ZM_StruprW
+
+#else
+#define TCHAR CHAR;
+#define ZM_L(x)  x
+#define ZM_strlen                 ZM_StrlenA
+#define ZM_Strcat                 ZM_StrcatA
+#define ZM_StrSafeCat          ZM_StrSafeCatA
+#define ZM_Strncat               ZM_StrncatA
+#define ZM_Strcpy                ZM_StrcpyA
+#define ZM_StrSafeCpy         ZM_StrSafeCpyA
+#define ZM_Strncpy              ZM_StrncpyA
+#define ZM_Strcmp               ZM_StrcmpA
+#define ZM_Strchr				   ZM_StrchrA
+#define ZM_Strcasecmp        ZM_StrcasecmpA
+#define ZM_Strtok                ZM_StrtokA
+#define ZM_Strlwr                ZM_StrlwrA
+#define ZM_Strupr               ZM_StruprA
+
+
 #endif
 
 
@@ -219,6 +250,7 @@ typedef std::wstring zstring;
         return strcat(strDestination,strSource);
     }
 
+
     /*
     * 功能：在目标Unicode字符串后添加一个Unicode字符串
     * @param strDestination : 以0为结束符的目标Unicode字符串
@@ -272,7 +304,7 @@ typedef std::wstring zstring;
     * @param strSource : 以0结尾的源字符串
     * @return 返回目标串,如果目标缓冲区的长度小于源串,返回NULL
     */
-    inline CHAR* SM_StrSafeCpyA( char *strDestination, size_t numberOfElements, const CHAR *strSource )
+    inline CHAR* ZM_StrSafeCpyA( char *strDestination, size_t numberOfElements, const CHAR *strSource )
     {
         if (numberOfElements  < strlen(strSource) +1)
         {
@@ -290,13 +322,13 @@ typedef std::wstring zstring;
     * @return 返回目标串,如果目标缓冲区的长度小于源串,返回NULL
     */
     template <class T>
-    inline void ZM_StrSafeCpy(T& Destination, const char* Source) 
+    inline void ZM_StrSafeCpyT(T& Destination, const char* Source) 
     {
         // Use cast to ensure that we only allow character arrays
         (static_cast<char[sizeof(Destination)]>(Destination));
 
         // Copy up to the size of the buffer
-        ZM_StrSafeCpy(Destination, Source, sizeof(Destination));
+        ZM_StrSafeCpyA(Destination, Source, sizeof(Destination));
     }
 
 
@@ -318,7 +350,7 @@ typedef std::wstring zstring;
     * @param strSource : 以0结尾的源Unicode字符串
     * @return 返回目标串,如果目标缓冲区的长度小于源串,返回NULL
     */
-    WCHAR * SM_StrSafeCpyW( WCHAR *strDestination, size_t numberOfElements, const WCHAR *strSource );
+    WCHAR * ZM_StrSafeCpyW( WCHAR *strDestination, size_t numberOfElements, const WCHAR *strSource );
 
     /*
     * 功能：拷贝字符串
@@ -560,47 +592,47 @@ typedef std::wstring zstring;
 	std::wstring  ZM_A2W(const CHAR *src);
 
 
-    /*
-    * 功能：将Unicode字符串转化为ANSI字符串
-    * @param src : 以0结尾的Unicode字符串
-    * @return 转化后的ANSI字符串
-    */
-	std::string  ZM_W2A(const WCHAR *src);
-  
-    /*
-    * 功能：将Unicode字符集转化为本地操作系统设置的字符集编码
-    * @param src : 以0结尾的Unicode字符串
-    * @return 转化后的字符串
-    */
-	std::string  ZM_W2Local(const WCHAR *src);
+ //   /*
+ //   * 功能：将Unicode字符串转化为ANSI字符串
+ //   * @param src : 以0结尾的Unicode字符串
+ //   * @return 转化后的ANSI字符串
+ //   */
+	//std::string  ZM_W2A(const WCHAR *src);
+ // 
+ //   /*
+ //   * 功能：将Unicode字符集转化为本地操作系统设置的字符集编码
+ //   * @param src : 以0结尾的Unicode字符串
+ //   * @return 转化后的字符串
+ //   */
+	//std::string  ZM_W2Local(const WCHAR *src);
 
-    /*
-    *功能： 将本地操作系统设置的字符集编码转换为Unicode字符集
-    * @param src : 以0结尾的字符串
-    * @return 转化后的字符串
-    */
-	std::wstring  ZM_Local2W(const CHAR *src);
+ //   /*
+ //   *功能： 将本地操作系统设置的字符集编码转换为Unicode字符集
+ //   * @param src : 以0结尾的字符串
+ //   * @return 转化后的字符串
+ //   */
+	//std::wstring  ZM_Local2W(const CHAR *src);
 
-    /*
-    * 功能：将Unicode字符集转换为UTF8编码集
-    * @param src : 以0结尾的Unicode字符串
-    * @return 转化后的字符串
-    */
-	std::string  ZM_W2UTF8(const WCHAR *src);
+ //   /*
+ //   * 功能：将Unicode字符集转换为UTF8编码集
+ //   * @param src : 以0结尾的Unicode字符串
+ //   * @return 转化后的字符串
+ //   */
+	//std::string  ZM_W2UTF8(const WCHAR *src);
 
-    /*
-    * 功能：将UTF8编码集转换为Unicode字符集
-    * @param src : 以0结尾的字符串
-    * @return 转化后的字符串
-    */
-    std::wstring  ZM_UTF82W(const CHAR *src);
+ //   /*
+ //   * 功能：将UTF8编码集转换为Unicode字符集
+ //   * @param src : 以0结尾的字符串
+ //   * @return 转化后的字符串
+ //   */
+ //   std::wstring  ZM_UTF82W(const CHAR *src);
 
-    /*
-    * 功能：将UTF8编码集转换为ASCII字符集
-    * @param src : 以0结尾的字符串
-    * @return 转化后的字符串
-    */
-    std::string  ZM_UTF82A(const CHAR *src);
+ //   /*
+ //   * 功能：将UTF8编码集转换为ASCII字符集
+ //   * @param src : 以0结尾的字符串
+ //   * @return 转化后的字符串
+ //   */
+ //   std::string  ZM_UTF82A(const CHAR *src);
 
     /*
 	*功能： 将ASCII字符集转换为UTF8编码集
@@ -674,7 +706,7 @@ typedef std::wstring zstring;
 	*/
 	inline INT32 ZM_Wtoi(const WCHAR *_Str)
 	{
-		return atoi(ZM_W2A(_Str).c_str());
+		//return atoi(ZM_W2A(_Str).c_str());
 	}
 
     /*
