@@ -12,6 +12,12 @@
 #include <stdarg.h>
 #include <vector>
 
+#if UNICODE
+typedef  std::string  zstring;
+#else
+typedef std::wstring zstring;
+#endif
+
 
 
 

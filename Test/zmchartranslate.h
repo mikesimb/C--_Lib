@@ -6,7 +6,7 @@ public:
 	~zmchartranslate(void);
 };
 
-
+/*
 const CHAR *  ZM_GetLocaleCharset (void)
 {
 	return locale_charset();
@@ -37,4 +37,5 @@ INT32 ZM_IconvCovert(CHAR *desc, CHAR *src, CHAR *input, size_t ilen, CHAR *outp
 	return 0;
 }
 }
+*/
 
