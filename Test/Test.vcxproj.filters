@@ -24,6 +24,9 @@
     <ClInclude Include="zmchartranslate.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ZM_Directory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="zm_string.cpp">
@@ -33,6 +36,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ZM_Directory.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

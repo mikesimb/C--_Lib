@@ -68,12 +68,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="zmchartranslate.h" />
+    <ClInclude Include="ZM_Directory.h" />
     <ClInclude Include="zm_string.h" />
     <ClInclude Include="zm_type.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="zmchartranslate.cpp" />
+    <ClCompile Include="ZM_Directory.cpp" />
     <ClCompile Include="zm_string.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

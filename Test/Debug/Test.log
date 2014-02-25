@@ -1,21 +1,19 @@
-﻿生成启动时间为 2014/2/21 17:13:23。
+﻿生成启动时间为 2014/2/25 15:43:26。
 项目“Z:\Documents\C++_Lib\Test\Test.vcxproj”在节点 2 上(Build 个目标)。
 ClCompile:
-  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Main.cpp zmchartranslate.cpp zm_string.cpp
-  zm_string.cpp
-  zmchartranslate.cpp
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Main.cpp
   Main.cpp
-z:\documents\c++_lib\test\main.cpp(78): warning C4101: “charnum”: 未引用的局部变量
-  正在生成代码...
+z:\documents\c++_lib\test\main.cpp(79): warning C4101: “charnum”: 未引用的局部变量
 Link:
   C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Z:\Documents\C++_Lib\Debug\Test.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Z:\Documents\C++_Lib\Debug\Test.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Z:\Documents\C++_Lib\Debug\Test.lib" /MACHINE:X86 Debug\Main.obj
   Debug\zmchartranslate.obj
+  Debug\ZM_Directory.obj
   Debug\zm_string.obj
   Test.vcxproj -> Z:\Documents\C++_Lib\Debug\Test.exe
 BscMake:
-  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\bscmake.exe /nologo /o"Z:\Documents\C++_Lib\Debug\Test.bsc" /n Debug\Main.sbr Debug\zmchartranslate.sbr Debug\zm_string.sbr
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\bscmake.exe /nologo /o"Z:\Documents\C++_Lib\Debug\Test.bsc" /n Debug\Main.sbr Debug\zmchartranslate.sbr Debug\ZM_Directory.sbr Debug\zm_string.sbr
 已完成生成项目“Z:\Documents\C++_Lib\Test\Test.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:48.36
+已用时间 00:00:06.16
