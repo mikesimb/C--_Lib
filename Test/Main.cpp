@@ -1,4 +1,5 @@
 #include "zm_string.h"
+#include "ZM_Directory.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
@@ -84,6 +85,19 @@ int main(int  argc , char * argv[])
 			c_dest =const_cast<char*>( txt_dest.c_str());
 			cout<<ZM_Strcpy(c_dest,txt_source.c_str())<<endl;
 		
+			break;
+		}
+	case 5:
+		{
+			//ZM_CreateDirectory(ZM_L("C:\\Bool\\k\\f\\"),TRUE);
+			if(ZM_isEmptyDirectory(ZM_L("C:\\Bool\\k\\f\\")))
+			{
+				printf("is Empty!");
+			}
+			else
+				printf("is Not Empty!");
+			if(ZM_DeleteDirectory(ZM_L("C:\\Bool\\"),TRUE))
+				printf("Delete Directory is Successed");
 			break;
 		}
 	default:

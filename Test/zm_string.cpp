@@ -1,5 +1,5 @@
 #include "zm_string.h"
-#include <atlconv.h>
+//#include <atlconv.h>
 
 
 #if (defined(WIN32) || defined(WIN64))
@@ -177,9 +177,10 @@
 		ZM_IconvCovert(ASCII_CHARSET,UNICODE_CHARSET,(CHAR*)src,wcslen(src)*sizeof(WCHAR),szDesc,nSize);
 		std::string strResult = szDesc;
 		return strResult;*/
-		USES_CONVERSION;
-		std::string strResult = W2A(src);
-		return strResult;
+		//USES_CONVERSION;
+		//std::string strResult = W2A(src);
+		//return strResult;
+		return NULL;
 	}
 
 	/*

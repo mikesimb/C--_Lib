@@ -27,6 +27,8 @@
 
 typedef HANDLE ZM_HANDLE;
 
+#define  ZM_MAX_PATH 260
+
 #define ZM_INVALID_HANDLE   NULL
 #define ZM_CLOSEHANDLE(x) CloseHandle(x)
 
